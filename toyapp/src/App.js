@@ -1,33 +1,39 @@
 import React, { Component } from "react";
 import "./App.css";
+import Form from "./Form";
 import Table from "./table";
 import { directive } from "@babel/types";
 
 class App extends Component {
-  render() {
-    const characters = [
-      {
-        name: "Charlie",
-        job: "Janitor"
-      },
-      {
-        name: "Mac",
-        job: "Bouncer"
-      },
-      {
-        name: "Dee",
-        job: "Aspring actress"
-      },
-      {
-        name: "Dennis",
-        job: "Bartender"
-      }
-    ];
+  state = {
+    characters: []
+  };
 
+  removeChar = index => {
+    const character = this.state.characters;
+
+    this.setState({
+      characters: character.filter((character, i) => {
+        return i !== index;
+      })
+    });
+  };
+
+  handleSubmit = character => {
+    this.setState({
+      characters: [...this.state.characters, character]
+    });
+  };
+
+  render() {
     return (
-      <div className="App">
+      <div className="Container">
         <h1>hello Myself!</h1>
-        <Table characterData={characters} />
+        <Table
+          characterData={this.state.characters}
+          removeCharacter={this.removeChar}
+        />
+        <Form handleSubmit={this.handleSubmit} />
       </div>
     );
   }

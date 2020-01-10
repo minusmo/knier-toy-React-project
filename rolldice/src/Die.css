@@ -1,0 +1,36 @@
+.fas {
+  font-size: 20em;
+  margin-left: 40px;
+}
+
+.isRolling {
+  font-size: 20em;
+  margin-left: 40px;
+  animation-name: isRolling;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes isRolling {
+  0% {
+    transform: translateX(-20px);
+  }
+  20% {
+    transform: translateX(+20px);
+  }
+
+  40% {
+    transform: translateX(-20px);
+  }
+
+  60% {
+    transform: translateX(+20px);
+  }
+  80% {
+    transform: translateX(-20px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
